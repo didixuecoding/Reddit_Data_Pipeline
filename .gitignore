@@ -4,10 +4,10 @@ docker-compose.yaml
 
 .idea
 
-./airflow/logs/*
+airflow/logs/*
 
-./venv/*
+venv/*
 
-./scripts/logging.ini
+scripts/logging.ini
 
-./scripts/s3_buckets.cfg
+scripts/s3_buckets.cfg
