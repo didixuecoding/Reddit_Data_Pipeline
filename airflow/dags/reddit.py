@@ -32,11 +32,11 @@ download_dataset_task = BashOperator(
 )
 
 
-# preporcess_authors_task = BashOperator(
-#     dag=dag,
-#     task_id='preprocess_authors',
-#     bash_command= f"zstd -cdq {DATASET_DIR}/Authors/RA_78M.csv.zst | {BASH_SCRIPT_DIR}/preprocess_authors.py | zstd -zqfo {DATASET_DIR}/Authors/RA_78M_processed.csv.zst",
-# )
+preporcess_authors_task = BashOperator(
+    dag=dag,
+    task_id='preprocess_authors',
+    bash_command= f"zstd -cdq {DATASET_DIR}/Authors/RA_78M.csv.zst | {BASH_SCRIPT_DIR}/preprocess_authors.py | zstd -zqfo {DATASET_DIR}/Authors/RA_78M_processed.csv.zst",
+)
 
 # upload_s3_task = S3UploadOperator(
 #     dag=dag,
