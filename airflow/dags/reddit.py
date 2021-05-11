@@ -38,15 +38,15 @@ preporcess_authors_task = BashOperator(
     bash_command= f"zstd -cdq {DATASET_DIR}/Authors/RA_78M.csv.zst | {BASH_SCRIPT_DIR}/preprocess_authors.py | zstd -zqfo {DATASET_DIR}/Authors/RA_78M_processed.csv.zst",
 )
 
-# upload_s3_task = S3UploadOperator(
-#     dag=dag,
-#     task_id='upload_s3_data',
-#     execution_timeout=timedelta(hours=1),
-#     aws_credentials_id='aws_credentials',
-#     dataset_dir=DATASET_DIR,
-#     file_glob="test/*",
-#     bucket_name=S3_BUCKET_NAME,
-# )
+upload_s3_task = S3UploadOperator(
+    dag=dag,
+    task_id='upload_s3_data',
+    execution_timeout=timedelta(hours=1),
+    aws_credentials_id='aws_credentials',
+    dataset_dir=DATASET_DIR,
+    file_glob="test/*",
+    bucket_name=S3_BUCKET_NAME,
+)
 
 end_operator = DummyOperator(dag=dag, task_id='end_execution')
 
